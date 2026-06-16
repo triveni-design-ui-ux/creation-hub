@@ -33,10 +33,10 @@ const webapps = [
 ];
 
 const stats = [
-  { label: "Total revenue", value: "$19,330.00", delta: "11.8%", sub: "vs. previous period", icon: DollarSign, tint: "bg-primary/10 text-primary" },
-  { label: "Total orders", value: "12", delta: "4.2%", sub: "this period", icon: ShoppingCart, tint: "bg-sky-500/10 text-sky-600" },
-  { label: "Avg. order value", value: "$1,610.83", delta: "2.6%", sub: "per order", icon: Receipt, tint: "bg-secondary/10 text-secondary" },
-  { label: "Conversion rate", value: "2.08%", delta: "0.4%", sub: "checkout success", icon: Package, tint: "bg-emerald-500/10 text-emerald-600" },
+  { label: "Total revenue", value: "$19,330.00", delta: "11.8%", sub: "vs. previous period", icon: DollarSign, tint: "bg-blue-50 text-blue-600" },
+  { label: "Total orders", value: "12", delta: "4.2%", sub: "this period", icon: ShoppingCart, tint: "bg-indigo-50 text-indigo-600" },
+  { label: "Avg. order value", value: "$1,610.83", delta: "2.6%", sub: "per order", icon: Receipt, tint: "bg-amber-50 text-amber-600" },
+  { label: "Conversion rate", value: "2.08%", delta: "0.4%", sub: "checkout success", icon: Package, tint: "bg-emerald-50 text-emerald-600" },
 ];
 
 const orders = [
