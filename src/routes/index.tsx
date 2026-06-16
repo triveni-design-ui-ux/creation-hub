@@ -3,7 +3,7 @@ import {
   LayoutDashboard, ShoppingBag, BarChart3, Users, FolderKanban, Cpu, Image as ImageIcon,
   UtensilsCrossed, Truck, GraduationCap, Building2, Megaphone, ChevronDown, ChevronsLeft,
   Search, Maximize2, Sliders, DollarSign, ShoppingCart, Receipt, Package, ArrowUpRight,
-  Calendar, Download, LogIn, Pencil, Plus, Send, MessageSquare,
+  Calendar, Download, LogIn, Pencil, Plus, Send, MessageSquare, Bell, Settings, Globe,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -33,10 +33,10 @@ const webapps = [
 ];
 
 const stats = [
-  { label: "Total revenue", value: "$19,330.00", delta: "11.8%", sub: "vs. previous period", icon: DollarSign, tint: "bg-primary/10 text-primary" },
-  { label: "Total orders", value: "12", delta: "4.2%", sub: "this period", icon: ShoppingCart, tint: "bg-sky-500/10 text-sky-600" },
-  { label: "Avg. order value", value: "$1,610.83", delta: "2.6%", sub: "per order", icon: Receipt, tint: "bg-secondary/10 text-secondary" },
-  { label: "Conversion rate", value: "2.08%", delta: "0.4%", sub: "checkout success", icon: Package, tint: "bg-emerald-500/10 text-emerald-600" },
+  { label: "Total revenue", value: "$19,330.00", delta: "11.8%", sub: "vs. previous period", icon: DollarSign, tint: "bg-blue-50 text-blue-600" },
+  { label: "Total orders", value: "12", delta: "4.2%", sub: "this period", icon: ShoppingCart, tint: "bg-indigo-50 text-indigo-600" },
+  { label: "Avg. order value", value: "$1,610.83", delta: "2.6%", sub: "per order", icon: Receipt, tint: "bg-amber-50 text-amber-600" },
+  { label: "Conversion rate", value: "2.08%", delta: "0.4%", sub: "checkout success", icon: Package, tint: "bg-emerald-50 text-emerald-600" },
 ];
 
 const orders = [
@@ -71,62 +71,77 @@ function Dashboard() {
       {/* Sidebar */}
       <aside className="hidden lg:flex w-64 shrink-0 flex-col bg-sidebar border-r border-border">
         <div className="p-5 flex items-center gap-3">
-          <div className="size-10 rounded-lg bg-gradient-to-br from-primary to-[#145673] grid place-items-center text-white font-semibold shadow-lg shadow-primary/20">R</div>
+          <div className="size-10 rounded-xl bg-primary grid place-items-center text-white font-semibold text-lg">R</div>
           <div>
-            <div className="font-semibold leading-none">Rivera</div>
+            <div className="font-semibold leading-none text-foreground">Rivera</div>
             <div className="text-[10px] tracking-[0.18em] text-muted-foreground mt-1">ADMIN · V1.0</div>
           </div>
         </div>
 
         <nav className="px-3 py-2 overflow-y-auto flex-1 text-sm">
-          <div className="px-2 pt-3 pb-2 text-[10px] tracking-[0.2em] text-muted-foreground">DASHBOARDS</div>
-          <button className="w-full flex items-center justify-between px-2 py-1.5 rounded-md hover:bg-accent/60 text-sidebar-foreground">
-            <span className="flex items-center gap-2"><LayoutDashboard className="size-4" /> Dashboards</span>
+          <div className="px-2 pt-3 pb-2 text-[10px] tracking-[0.2em] text-muted-foreground font-medium">DASHBOARDS</div>
+          <button className="w-full flex items-center justify-between px-3 py-2 rounded-lg hover:bg-accent text-sidebar-foreground">
+            <span className="flex items-center gap-2.5"><LayoutDashboard className="size-4 text-muted-foreground" /> Dashboards</span>
             <ChevronDown className="size-3.5 opacity-60" />
           </button>
           <div className="mt-1 ml-6 border-l border-border pl-3 space-y-0.5">
             {dashboards.map((d) => (
-              <a key={d.name} href="#" className={`block px-2 py-1.5 rounded-md text-[13px] ${d.active ? "bg-accent text-foreground" : "text-muted-foreground hover:text-foreground hover:bg-accent/40"}`}>
+              <a key={d.name} href="#" className={`block px-3 py-2 rounded-lg text-[13px] ${d.active ? "bg-accent text-foreground font-medium" : "text-muted-foreground hover:text-foreground hover:bg-accent/60"}`}>
                 {d.name}
               </a>
             ))}
           </div>
 
-          <div className="px-2 pt-5 pb-2 text-[10px] tracking-[0.2em] text-muted-foreground">WEBAPPS</div>
+          <div className="px-2 pt-5 pb-2 text-[10px] tracking-[0.2em] text-muted-foreground font-medium">WEBAPPS</div>
           <div className="space-y-0.5">
             {webapps.map((w) => (
-              <button key={w.name} className="w-full flex items-center justify-between px-2 py-1.5 rounded-md hover:bg-accent/60 text-sidebar-foreground">
-                <span className="flex items-center gap-2"><w.icon className="size-4 opacity-80" /> {w.name}</span>
+              <button key={w.name} className="w-full flex items-center justify-between px-3 py-2 rounded-lg hover:bg-accent text-sidebar-foreground">
+                <span className="flex items-center gap-2.5"><w.icon className="size-4 text-muted-foreground" /> {w.name}</span>
                 <ChevronDown className="size-3.5 opacity-50" />
               </button>
             ))}
           </div>
         </nav>
 
-        <div className="m-3 p-2 rounded-lg bg-accent/40 border border-border flex items-center gap-3">
-          <div className="size-8 rounded-md bg-gradient-to-br from-slate-200 to-slate-400 text-slate-900 grid place-items-center text-sm font-semibold">A</div>
+        <div className="m-3 p-2 rounded-xl bg-accent/50 flex items-center gap-3">
+          <div className="size-9 rounded-lg bg-primary text-white grid place-items-center text-sm font-semibold">A</div>
           <div className="flex-1 min-w-0">
-            <div className="text-sm leading-none">Admin</div>
-            <div className="text-[10px] tracking-[0.18em] text-muted-foreground mt-1">ADMIN</div>
+            <div className="text-sm leading-none font-medium text-foreground">Admin</div>
+            <div className="text-[10px] tracking-[0.18em] text-muted-foreground mt-0.5">ADMIN</div>
           </div>
-          <ChevronDown className="size-4 opacity-60" />
+          <ChevronDown className="size-4 opacity-60 text-muted-foreground" />
         </div>
       </aside>
 
       {/* Main */}
       <div className="flex-1 min-w-0 flex flex-col">
         {/* Top bar */}
-        <header className="h-14 border-b border-border flex items-center gap-3 px-4 lg:px-6">
-          <button className="size-8 rounded-md hover:bg-accent grid place-items-center text-muted-foreground"><ChevronsLeft className="size-4" /></button>
+        <header className="h-14 border-b border-border flex items-center gap-3 px-4 lg:px-6 bg-card">
+          <button className="size-8 rounded-lg hover:bg-accent grid place-items-center text-muted-foreground"><ChevronsLeft className="size-4" /></button>
           <div className="flex-1 max-w-xl relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
-            <input placeholder="Search…" className="w-full h-9 pl-9 pr-12 rounded-md bg-card border border-border text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/40" />
-            <kbd className="absolute right-2 top-1/2 -translate-y-1/2 text-[10px] text-muted-foreground bg-accent px-1.5 py-0.5 rounded">⌘K</kbd>
+            <input placeholder="Search…" className="w-full h-9 pl-9 pr-12 rounded-lg bg-background border border-border text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30" />
+            <kbd className="absolute right-2 top-1/2 -translate-y-1/2 text-[10px] text-muted-foreground bg-accent px-1.5 py-0.5 rounded-md border border-border">⌘K</kbd>
           </div>
           <div className="flex items-center gap-1 ml-auto">
-            <button className="size-8 rounded-md hover:bg-accent grid place-items-center text-muted-foreground"><Maximize2 className="size-4" /></button>
-            <div className="size-2 rounded-full bg-emerald-500 ml-1" />
-            <div className="size-2 rounded-full bg-rose-500" />
+            <button className="size-8 rounded-lg hover:bg-accent grid place-items-center text-muted-foreground"><Maximize2 className="size-4" /></button>
+            <button className="size-8 rounded-lg hover:bg-accent grid place-items-center text-muted-foreground"><Globe className="size-4" /></button>
+            <button className="relative size-8 rounded-lg hover:bg-accent grid place-items-center text-muted-foreground">
+              <MessageSquare className="size-4" />
+              <span className="absolute -top-0.5 -right-0.5 size-4 rounded-full bg-emerald-500 text-[9px] text-white font-medium grid place-items-center border-2 border-card">2</span>
+            </button>
+            <button className="relative size-8 rounded-lg hover:bg-accent grid place-items-center text-muted-foreground">
+              <Bell className="size-4" />
+              <span className="absolute -top-0.5 -right-0.5 size-4 rounded-full bg-rose-500 text-[9px] text-white font-medium grid place-items-center border-2 border-card">4</span>
+            </button>
+            <button className="size-8 rounded-lg hover:bg-accent grid place-items-center text-muted-foreground"><Settings className="size-4" /></button>
+            <div className="flex items-center gap-2 ml-1 pl-2 border-l border-border">
+              <div className="size-8 rounded-lg bg-primary text-white grid place-items-center text-sm font-semibold">A</div>
+              <div className="hidden md:block">
+                <div className="text-sm leading-none font-medium text-foreground">Admin</div>
+                <div className="text-[10px] tracking-[0.18em] text-muted-foreground mt-0.5">ADMIN</div>
+              </div>
+            </div>
           </div>
         </header>
 
