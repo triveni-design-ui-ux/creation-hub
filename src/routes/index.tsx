@@ -71,9 +71,9 @@ function Dashboard() {
       {/* Sidebar */}
       <aside className="hidden lg:flex w-64 shrink-0 flex-col bg-sidebar border-r border-border">
         <div className="p-5 flex items-center gap-3">
-          <div className="size-10 rounded-lg bg-gradient-to-br from-primary to-[#145673] grid place-items-center text-white font-semibold shadow-lg shadow-primary/20">R</div>
+          <div className="size-10 rounded-xl bg-primary grid place-items-center text-white font-semibold text-lg">R</div>
           <div>
-            <div className="font-semibold leading-none">Rivera</div>
+            <div className="font-semibold leading-none text-foreground">Rivera</div>
             <div className="text-[10px] tracking-[0.18em] text-muted-foreground mt-1">ADMIN · V1.0</div>
           </div>
         </div>
