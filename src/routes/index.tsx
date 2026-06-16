@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import React, { useState } from "react";
 import {
   LayoutDashboard,
   ShoppingBag,
@@ -77,9 +78,30 @@ const webapps = [
   { name: "Subscription", icon: Calendar },
 ];
 
+const sidebarMenu = [
+  { name: "Dashboard", icon: LayoutDashboard },
+  { name: "On Board Dashboard", icon: LayoutDashboard },
+  {
+    name: "Master",
+    icon: Cpu,
+    children: [{ name: "Users" }, { name: "Companies" }, { name: "Locations" }],
+  },
+  { name: "Items", icon: ShoppingCart, children: [{ name: "Products" }, { name: "Categories" }] },
+  { name: "InBound", icon: Package, children: [{ name: "Receipts" }, { name: "Putaway" }] },
+  {
+    name: "OutBound",
+    icon: Truck,
+    children: [{ name: "Pick" }, { name: "Pack" }, { name: "Ship" }],
+  },
+  { name: "Inventory", icon: BarChart3, children: [{ name: "Stock" }] },
+  { name: "Reports", icon: Receipt, children: [{ name: "Daily" }, { name: "Monthly" }] },
+  { name: "Invoicing", icon: Receipt },
+  { name: "Settings", icon: Settings },
+];
+
 const stats = [
   {
-    label: "Total revenue",
+    label: "Shipping Orders Today",
     value: "$19,330.00",
     delta: "11.8%",
     sub: "vs. previous period",
@@ -87,7 +109,7 @@ const stats = [
     tint: "bg-blue-50 text-blue-600",
   },
   {
-    label: "Total orders",
+    label: "Receiving orders",
     value: "12",
     delta: "4.2%",
     sub: "this period",
@@ -95,20 +117,12 @@ const stats = [
     tint: "bg-indigo-50 text-indigo-600",
   },
   {
-    label: "Avg. order value",
+    label: "Pending Outbound",
     value: "$1,610.83",
     delta: "2.6%",
     sub: "per order",
     icon: Receipt,
     tint: "bg-amber-50 text-amber-600",
-  },
-  {
-    label: "Conversion rate",
-    value: "2.08%",
-    delta: "0.4%",
-    sub: "checkout success",
-    icon: Package,
-    tint: "bg-emerald-50 text-emerald-600",
   },
 ];
 
@@ -184,6 +198,63 @@ const activity = [
   },
 ];
 
+function SidebarItem({ item }) {
+  const [open, setOpen] = useState(false);
+
+  if (item.children) {
+    return (
+      <li>
+        <button
+          onClick={() => setOpen((v) => !v)}
+          className="w-full flex items-center justify-between px-3 py-2 rounded-lg hover:bg-accent text-sidebar-foreground"
+        >
+          <span className="flex items-center gap-2.5">
+            {item.icon
+              ? (() => {
+                  const Icon = item.icon;
+                  return <Icon className="size-4 text-muted-foreground" />;
+                })()
+              : null}
+            {item.name}
+          </span>
+          <ChevronDown className={`size-3.5 transition-transform ${open ? "-rotate-180" : ""}`} />
+        </button>
+        {open ? (
+          <ul className="ml-4 mt-1 border-l border-border pl-3 space-y-1">
+            {item.children.map((c) => (
+              <li key={c.name}>
+                <a
+                  href="#"
+                  className="block px-3 py-2 rounded-lg text-[13px] text-muted-foreground hover:text-foreground hover:bg-accent/60"
+                >
+                  {c.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        ) : null}
+      </li>
+    );
+  }
+
+  return (
+    <li>
+      <a
+        href="#"
+        className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg hover:bg-accent text-sidebar-foreground"
+      >
+        {item.icon
+          ? (() => {
+              const Icon = item.icon;
+              return <Icon className="size-4 text-muted-foreground" />;
+            })()
+          : null}{" "}
+        {item.name}
+      </a>
+    </li>
+  );
+}
+
 function Dashboard() {
   return (
     <div className="min-h-screen flex bg-background text-foreground">
@@ -191,9 +262,6 @@ function Dashboard() {
       <aside className="hidden lg:flex w-64 shrink-0 flex-col bg-sidebar border-r border-border bg-white">
         <div className="px-5 py-2.5 flex items-center gap-3 border-b">
           <img src={logo} alt="Pallet WMS" className="h-8" />
-          {/* <div className="size-10 rounded-xl bg-primary grid place-items-center text-white font-semibold text-lg">
-            W
-          </div> */}
           <div>
             <div className="font-semibold leading-none text-foreground">Pallet WMS</div>
             <div className="text-[10px] tracking-[0.18em] text-muted-foreground mt-1">
@@ -204,44 +272,13 @@ function Dashboard() {
 
         <nav className="px-3 py-2 overflow-y-auto flex-1 text-sm">
           <div className="px-2 pt-3 pb-2 text-[10px] tracking-[0.2em] text-muted-foreground font-medium">
-            DASHBOARDS
+            MENU
           </div>
-          <button className="w-full flex items-center justify-between px-3 py-2 rounded-lg hover:bg-accent text-sidebar-foreground">
-            <span className="flex items-center gap-2.5">
-              <LayoutDashboard className="size-4 text-muted-foreground" /> Dashboards
-            </span>
-            <ChevronDown className="size-3.5 opacity-60" />
-          </button>
-          <div className="mt-1 ml-6 border-l border-border pl-3 space-y-0.5">
-            {dashboards.map((d) => (
-              <a
-                key={d.name}
-                href="#"
-                className={`w-full block px-3 py-2 rounded-lg text-[13px] ${d.active ? "bg-accent text-foreground font-medium" : "text-muted-foreground hover:text-foreground hover:bg-accent/60"}`}
-              >
-                <span className="flex items-center gap-2.5">
-                  <LayoutDashboard className="size-4 text-muted-foreground" /> {d.name}
-                </span>
-              </a>
+          <ul className="mt-2 space-y-1">
+            {sidebarMenu.map((item) => (
+              <SidebarItem key={item.name} item={item} />
             ))}
-          </div>
-
-          <div className="px-2 pt-5 pb-2 text-[10px] tracking-[0.2em] text-muted-foreground font-medium">
-            WEBAPPS
-          </div>
-          <div className="space-y-0.5">
-            {webapps.map((w) => (
-              <button
-                key={w.name}
-                className="w-full flex items-center justify-between px-3 py-2 rounded-lg hover:bg-accent text-sidebar-foreground"
-              >
-                <span className="flex items-center gap-2.5">
-                  <w.icon className="size-4 text-muted-foreground" /> {w.name}
-                </span>
-                <ChevronDown className="size-3.5 opacity-50" />
-              </button>
-            ))}
-          </div>
+          </ul>
         </nav>
 
         <div className="m-3 p-2 rounded-xl bg-accent/50 flex items-center gap-3">
@@ -336,7 +373,7 @@ function Dashboard() {
           </div>
 
           {/* KPI cards */}
-          <div className="mt-8 grid gap-4 grid-cols-1 sm:grid-cols-2 xl:grid-cols-4">
+          <div className="mt-8 grid gap-4 grid-cols-1 sm:grid-cols-2 xl:grid-cols-3">
             {stats.map((s) => (
               <div key={s.label} className="rounded-xl bg-card border border-border p-5">
                 <div className="flex items-start justify-between">
