@@ -79,37 +79,37 @@ function Dashboard() {
         </div>
 
         <nav className="px-3 py-2 overflow-y-auto flex-1 text-sm">
-          <div className="px-2 pt-3 pb-2 text-[10px] tracking-[0.2em] text-muted-foreground">DASHBOARDS</div>
-          <button className="w-full flex items-center justify-between px-2 py-1.5 rounded-md hover:bg-accent/60 text-sidebar-foreground">
-            <span className="flex items-center gap-2"><LayoutDashboard className="size-4" /> Dashboards</span>
+          <div className="px-2 pt-3 pb-2 text-[10px] tracking-[0.2em] text-muted-foreground font-medium">DASHBOARDS</div>
+          <button className="w-full flex items-center justify-between px-3 py-2 rounded-lg hover:bg-accent text-sidebar-foreground">
+            <span className="flex items-center gap-2.5"><LayoutDashboard className="size-4 text-muted-foreground" /> Dashboards</span>
             <ChevronDown className="size-3.5 opacity-60" />
           </button>
           <div className="mt-1 ml-6 border-l border-border pl-3 space-y-0.5">
             {dashboards.map((d) => (
-              <a key={d.name} href="#" className={`block px-2 py-1.5 rounded-md text-[13px] ${d.active ? "bg-accent text-foreground" : "text-muted-foreground hover:text-foreground hover:bg-accent/40"}`}>
+              <a key={d.name} href="#" className={`block px-3 py-2 rounded-lg text-[13px] ${d.active ? "bg-accent text-foreground font-medium" : "text-muted-foreground hover:text-foreground hover:bg-accent/60"}`}>
                 {d.name}
               </a>
             ))}
           </div>
 
-          <div className="px-2 pt-5 pb-2 text-[10px] tracking-[0.2em] text-muted-foreground">WEBAPPS</div>
+          <div className="px-2 pt-5 pb-2 text-[10px] tracking-[0.2em] text-muted-foreground font-medium">WEBAPPS</div>
           <div className="space-y-0.5">
             {webapps.map((w) => (
-              <button key={w.name} className="w-full flex items-center justify-between px-2 py-1.5 rounded-md hover:bg-accent/60 text-sidebar-foreground">
-                <span className="flex items-center gap-2"><w.icon className="size-4 opacity-80" /> {w.name}</span>
+              <button key={w.name} className="w-full flex items-center justify-between px-3 py-2 rounded-lg hover:bg-accent text-sidebar-foreground">
+                <span className="flex items-center gap-2.5"><w.icon className="size-4 text-muted-foreground" /> {w.name}</span>
                 <ChevronDown className="size-3.5 opacity-50" />
               </button>
             ))}
           </div>
         </nav>
 
-        <div className="m-3 p-2 rounded-lg bg-accent/40 border border-border flex items-center gap-3">
-          <div className="size-8 rounded-md bg-gradient-to-br from-slate-200 to-slate-400 text-slate-900 grid place-items-center text-sm font-semibold">A</div>
+        <div className="m-3 p-2 rounded-xl bg-accent/50 flex items-center gap-3">
+          <div className="size-9 rounded-lg bg-primary text-white grid place-items-center text-sm font-semibold">A</div>
           <div className="flex-1 min-w-0">
-            <div className="text-sm leading-none">Admin</div>
-            <div className="text-[10px] tracking-[0.18em] text-muted-foreground mt-1">ADMIN</div>
+            <div className="text-sm leading-none font-medium text-foreground">Admin</div>
+            <div className="text-[10px] tracking-[0.18em] text-muted-foreground mt-0.5">ADMIN</div>
           </div>
-          <ChevronDown className="size-4 opacity-60" />
+          <ChevronDown className="size-4 opacity-60 text-muted-foreground" />
         </div>
       </aside>
 
