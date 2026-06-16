@@ -116,17 +116,32 @@ function Dashboard() {
       {/* Main */}
       <div className="flex-1 min-w-0 flex flex-col">
         {/* Top bar */}
-        <header className="h-14 border-b border-border flex items-center gap-3 px-4 lg:px-6">
-          <button className="size-8 rounded-md hover:bg-accent grid place-items-center text-muted-foreground"><ChevronsLeft className="size-4" /></button>
+        <header className="h-14 border-b border-border flex items-center gap-3 px-4 lg:px-6 bg-card">
+          <button className="size-8 rounded-lg hover:bg-accent grid place-items-center text-muted-foreground"><ChevronsLeft className="size-4" /></button>
           <div className="flex-1 max-w-xl relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
-            <input placeholder="Search…" className="w-full h-9 pl-9 pr-12 rounded-md bg-card border border-border text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/40" />
-            <kbd className="absolute right-2 top-1/2 -translate-y-1/2 text-[10px] text-muted-foreground bg-accent px-1.5 py-0.5 rounded">⌘K</kbd>
+            <input placeholder="Search…" className="w-full h-9 pl-9 pr-12 rounded-lg bg-background border border-border text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30" />
+            <kbd className="absolute right-2 top-1/2 -translate-y-1/2 text-[10px] text-muted-foreground bg-accent px-1.5 py-0.5 rounded-md border border-border">⌘K</kbd>
           </div>
           <div className="flex items-center gap-1 ml-auto">
-            <button className="size-8 rounded-md hover:bg-accent grid place-items-center text-muted-foreground"><Maximize2 className="size-4" /></button>
-            <div className="size-2 rounded-full bg-emerald-500 ml-1" />
-            <div className="size-2 rounded-full bg-rose-500" />
+            <button className="size-8 rounded-lg hover:bg-accent grid place-items-center text-muted-foreground"><Maximize2 className="size-4" /></button>
+            <button className="size-8 rounded-lg hover:bg-accent grid place-items-center text-muted-foreground"><Globe className="size-4" /></button>
+            <button className="relative size-8 rounded-lg hover:bg-accent grid place-items-center text-muted-foreground">
+              <MessageSquare className="size-4" />
+              <span className="absolute -top-0.5 -right-0.5 size-4 rounded-full bg-emerald-500 text-[9px] text-white font-medium grid place-items-center border-2 border-card">2</span>
+            </button>
+            <button className="relative size-8 rounded-lg hover:bg-accent grid place-items-center text-muted-foreground">
+              <Bell className="size-4" />
+              <span className="absolute -top-0.5 -right-0.5 size-4 rounded-full bg-rose-500 text-[9px] text-white font-medium grid place-items-center border-2 border-card">4</span>
+            </button>
+            <button className="size-8 rounded-lg hover:bg-accent grid place-items-center text-muted-foreground"><Settings className="size-4" /></button>
+            <div className="flex items-center gap-2 ml-1 pl-2 border-l border-border">
+              <div className="size-8 rounded-lg bg-primary text-white grid place-items-center text-sm font-semibold">A</div>
+              <div className="hidden md:block">
+                <div className="text-sm leading-none font-medium text-foreground">Admin</div>
+                <div className="text-[10px] tracking-[0.18em] text-muted-foreground mt-0.5">ADMIN</div>
+              </div>
+            </div>
           </div>
         </header>
 
