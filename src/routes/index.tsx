@@ -3,7 +3,7 @@ import {
   LayoutDashboard, ShoppingBag, BarChart3, Users, FolderKanban, Cpu, Image as ImageIcon,
   UtensilsCrossed, Truck, GraduationCap, Building2, Megaphone, ChevronDown, ChevronsLeft,
   Search, Maximize2, Sliders, DollarSign, ShoppingCart, Receipt, Package, ArrowUpRight,
-  Calendar, Download, LogIn, Pencil, Plus, Send, MessageSquare, Bell, Settings, MessageCircle, Globe,
+  Calendar, Download, LogIn, Pencil, Plus, Send, MessageSquare, Bell, Settings, Globe,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
