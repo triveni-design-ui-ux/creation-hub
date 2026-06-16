@@ -206,7 +206,13 @@ function Dashboard() {
           <div className="px-2 pt-3 pb-2 text-[10px] tracking-[0.2em] text-muted-foreground font-medium">
             DASHBOARDS
           </div>
-          <div className="space-y-0.5">
+          <button className="w-full flex items-center justify-between px-3 py-2 rounded-lg hover:bg-accent text-sidebar-foreground">
+            <span className="flex items-center gap-2.5">
+              <LayoutDashboard className="size-4 text-muted-foreground" /> Dashboards
+            </span>
+            <ChevronDown className="size-3.5 opacity-60" />
+          </button>
+          <div className="mt-1 ml-6 border-l border-border pl-3 space-y-0.5">
             {dashboards.map((d) => (
               <a
                 key={d.name}
