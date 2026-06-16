@@ -270,7 +270,7 @@ function Dashboard() {
               className="w-full h-9 pl-9 pr-12 rounded-lg bg-background border border-border text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
             />
             <kbd className="absolute right-2 top-1/2 -translate-y-1/2 text-[10px] text-muted-foreground bg-accent px-1.5 py-0.5 rounded-md border border-border">
-              ⌘K
+              Test
             </kbd>
           </div>
           <div className="flex items-center gap-1 ml-auto">
